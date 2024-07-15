@@ -1,0 +1,19 @@
+name: Triggered Action
+
+on:
+  workflow_dispatch:
+    inputs:
+      param1:
+        description: 'A parameter'
+        required: true
+
+jobs:
+  triggered-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Do something
+        run: echo "This action was triggered by a commit in toto with parameter ${{ github.event.inputs.param1 }}"
